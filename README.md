@@ -36,7 +36,24 @@ Jinja2 Extension for getting environment variables
 
 Install this via pip (or your favourite package manager):
 
-`pip install jinja2-env`
+```shell
+pip install jinja2-env
+```
+
+## Usage
+
+As a statement:
+
+```jinja2
+{% env "HOME" %}
+{% env "HOME", default %}
+```
+
+As a expression:
+
+```jinja2
+{{ "default" | env("HOME") }}
+```
 
 ## Contributors ✨
 
