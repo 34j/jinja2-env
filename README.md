@@ -42,6 +42,8 @@ pip install jinja2-env
 
 ## Usage
 
+The extension class is `jinja2_env.EnvExtension`.
+
 As a statement:
 
 ```jinja2
