@@ -23,25 +23,18 @@ class TestMain(TestCase):
     expected: str | None
 
     def setUp(self):
-        self.environment = Environment(extensions=["jinja2_env.EnvExtension"])
+        self.environment = Environment(  # noqa: S701
+            extensions=["jinja2_env.EnvExtension"]
+        )
 
     def test_statement(self):
         template = self.environment.from_string("{% env '" + self.env + "' %}")
-        self.assertEqual(
-            template.render(), self.expected if self.expected is not None else "none"
-        )
+        assert template.render() == (self.expected if self.expected is not None else "none")
 
     def test_statement_no_rstrip(self):
         template = self.environment.from_string("{% env '" + self.env + "', 'akdjw' %}")
-        self.assertEqual(
-            template.render(), self.expected if self.expected is not None else "akdjw"
-        )
+        assert template.render() == (self.expected if self.expected is not None else "akdjw")
 
     def test_expression(self):
-        template = self.environment.from_string(
-            "{{ 'adkejf' | env('" + self.env + "') }}"
-        )
-        print(template.render())
-        self.assertEqual(
-            template.render(), self.expected if self.expected is not None else "adkejf"
-        )
+        template = self.environment.from_string("{{ 'adkejf' | env('" + self.env + "') }}")
+        assert template.render() == (self.expected if self.expected is not None else "adkejf")
