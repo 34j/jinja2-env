@@ -38,7 +38,7 @@
 
 ---
 
-Jinja2 Extension for getting eval() result.
+Jinja2 Extension for getting environment variables.
 
 ## Installation
 
@@ -54,13 +54,13 @@ The extension class is `jinja2_env.EnvExtension`.
 
 As a statement:
 
-```text
+```jinja2
 {% env "HOME" %}
 {% env "HOME", default %}
 ```
 
 As a expression:
 
-```text
+```jinja2
 {{ "default" | env("HOME") }}
 ```
